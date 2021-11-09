@@ -1,40 +1,76 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
+import { Grid, Typography, Box } from '@material-ui/core';
+import Avatar from '@material-ui/core/Avatar';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
-const useStyles = makeStyles((themes) => ({
+const useStyles = makeStyles((theme) => ({
     root: {
-        display: 'flex',
         height: '100vh',
-
     },
+
     image: {
-        background: 'green',
-        flexBasis: '58%',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
+        backgroundImage: 'url(/imgs/background.jpg)',
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'none',
+        padding: theme.spacing(2),
+        textAlign: 'center',
+    },
+    avatar: {
+        background: theme.palette.primary.main,
+        marginBottom: theme.spacing(1),
+    },
+    button: {
+        marginTop: theme.spacing(1),
     },
     form: {
-        background: 'red',
-        flexBasis: '42%',
-    }
+        margin: theme.spacing(2, 4),
+    },
 }));
-
 
 function SignIn() {
     const classes = useStyles();
     return (
-        <div className={classes.root}>
 
-            <div className={classes.image}>
-                <h2>Titulo</h2>
-                <h2>Sub</h2>
+        <Grid container className={classes.root}>
+            <Grid
+                item
+                container
+                direction="column"
+                justify="center"
+                alignItems="center"
+                md={7}
+                className={classes.image}>
+                <Typography style={{ color: '#fff', fontSize: 35, lineHeight: '45px' }}>
+                    <strong>
+                        Simplificando a forma de conectar desenvolvedores de software!
+                    </strong>
+                </Typography>
+                <Typography
+                    variant="body2"
+                    style={{
+                        color: 'rgb(255,255,255, 0.7)',
+                        marginTop: 30,
+                        fontSize: 15,
+                        lineHeight: '30px',
+                    }}
+                >
+                    Compartilhe seu conhecimento com toda nossa rede de desenvolvedores de
+                    software.
+                </Typography>
 
-            </div>
-            <div className={classes.form}>form</div>
+            </Grid>
+            <Grid item md={5}>
+                <Box display="flex" flexDirection="column" alignItems="center" mt={8}>
+                    <Avatar className={classes.avatar}>
+                        <LockOutlinedIcon />
+                    </Avatar>
+                    <Typography variant="h5">Acesso</Typography>
+                </Box>
+            </Grid>
+        </Grid>
 
-        </div>
     )
 }
 export default SignIn;
