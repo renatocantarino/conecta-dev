@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Typography, Box, Button, Link, FormHelperText } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import TextField from '@material-ui/core/TextField';
-import { useNavigate } from 'react-router-dom';
-import AuthService from '../../services/auth/signInService';
+import { signIn } from '../../state/actions/AccountAction'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -43,24 +44,30 @@ function Copyright() {
 }
 
 function SignIn() {
+
     const classes = useStyles();
     const navigate = useNavigate();
+
+    // useEffect(() => {
+    //     if (AuthService.isAuthenticated()) {
+    //         navigate('/');
+    //     }
+    // })
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState();
 
-
+    const dispatch = useDispatch();
     async function handleSubmit() {
         try {
-            await AuthService.signIn(email, password);
+            await dispatch(signIn(email, password));
             navigate('/');
         }
         catch (error) {
             setErrors(error.response.data.message);
         }
     }
-
-
 
     return (
         <Grid container className={classes.root}>
