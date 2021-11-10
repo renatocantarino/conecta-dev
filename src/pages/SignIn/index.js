@@ -1,8 +1,11 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { Grid, Typography, Box } from '@material-ui/core';
+import { Grid, Typography, Box, Button, Link } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import TextField from '@material-ui/core/TextField';
+import { useNavigate } from 'react-router-dom'
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -29,8 +32,18 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+
+function Copyright() {
+    return (
+        <Typography variant="body2" color="textSecondary" align="center">
+            Cantarino © {new Date().getFullYear()}
+        </Typography>
+    );
+}
+
 function SignIn() {
     const classes = useStyles();
+    const navigate = useNavigate();
     return (
 
         <Grid container className={classes.root}>
@@ -62,11 +75,62 @@ function SignIn() {
 
             </Grid>
             <Grid item md={5}>
-                <Box display="flex" flexDirection="column" alignItems="center" mt={8}>
+                <Box display="flex"
+                    flexDirection="column"
+                    alignItems="center"
+                    mt={8}>
                     <Avatar className={classes.avatar}>
                         <LockOutlinedIcon />
                     </Avatar>
                     <Typography variant="h5">Acesso</Typography>
+                    <form className={classes.form}>
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="email"
+                            label="Email"
+                            name="email"
+                            autoComplete="email"
+                            autoFocus
+                        />
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="password"
+                            label="Senha"
+                            name="password"
+                            type="password"
+                            autoComplete="current-password"
+                            autoFocus
+                        />
+                        <Button
+                            className={classes.button}
+                            fullWidth
+                            color="primary"
+                            variant="contained"
+                            onClick={() => navigate('/')}
+                        >
+                            Entrar
+                        </Button>
+
+                        <Grid container>
+                            <Grid item>
+                                <Link href="#" variant="body2">
+                                    Esqueceu sua senha?
+                                </Link>
+                            </Grid>
+                            <Grid item>
+                                <Link href="#" variant="body2">
+                                    Não tem uma conta? Cadastre-se
+                                </Link>
+                            </Grid>
+                        </Grid>
+                    </form>
+                    <Copyright />
                 </Box>
             </Grid>
         </Grid>
