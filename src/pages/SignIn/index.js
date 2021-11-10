@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { Grid, Typography, Box, Button, Link } from '@material-ui/core';
+import { Grid, Typography, Box, Button, Link, FormHelperText } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import TextField from '@material-ui/core/TextField';
 import { useNavigate } from 'react-router-dom';
-import axios from '../../Utils/axios';
+import AuthService from '../../services/auth/signInService';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -45,11 +45,19 @@ function Copyright() {
 function SignIn() {
     const classes = useStyles();
     const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState();
 
-    async function handleSubmit(event) {
-        const response = await axios.post('/api/user/login');
-        console.log(response);
-        //navigate('/');
+
+    async function handleSubmit() {
+        try {
+            await AuthService.signIn(email, password);
+            navigate('/');
+        }
+        catch (error) {
+            setErrors(error.response.data.message);
+        }
     }
 
 
@@ -103,6 +111,8 @@ function SignIn() {
                             name="email"
                             autoComplete="email"
                             autoFocus
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                         <TextField
                             variant="outlined"
@@ -115,6 +125,8 @@ function SignIn() {
                             type="password"
                             autoComplete="current-password"
                             autoFocus
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                         />
                         <Button
                             className={classes.button}
@@ -125,6 +137,11 @@ function SignIn() {
                         >
                             Entrar
                         </Button>
+                        {
+                            errors && <FormHelperText error >
+                                {errors}
+                            </FormHelperText>
+                        }
 
                         <Grid container>
                             <Grid item>

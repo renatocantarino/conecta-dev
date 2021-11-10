@@ -31,7 +31,7 @@ function Header() {
             <Toolbar>
 
                 <img
-                    src='/imgs/logo192.png'
+                    src='/imgs/logo.png'
                     alt="logo"
                     className={classes.img}
                 />
