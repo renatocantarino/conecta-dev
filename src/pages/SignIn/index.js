@@ -4,7 +4,8 @@ import { Grid, Typography, Box, Button, Link } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import TextField from '@material-ui/core/TextField';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import axios from '../../Utils/axios';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -44,14 +45,22 @@ function Copyright() {
 function SignIn() {
     const classes = useStyles();
     const navigate = useNavigate();
-    return (
 
+    async function handleSubmit(event) {
+        const response = await axios.post('/api/user/login');
+        console.log(response);
+        //navigate('/');
+    }
+
+
+
+    return (
         <Grid container className={classes.root}>
             <Grid
                 item
                 container
                 direction="column"
-                justify="center"
+                justifyContent="center"
                 alignItems="center"
                 md={7}
                 className={classes.image}>
@@ -112,7 +121,7 @@ function SignIn() {
                             fullWidth
                             color="primary"
                             variant="contained"
-                            onClick={() => navigate('/')}
+                            onClick={handleSubmit}
                         >
                             Entrar
                         </Button>
