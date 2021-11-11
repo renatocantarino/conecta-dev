@@ -12,7 +12,7 @@ const signIn = (email, password) => {
         dispatch({
             type: LOGIN_SUCCESS,
             payload: {
-                user,
+                user
             },
         });
     };

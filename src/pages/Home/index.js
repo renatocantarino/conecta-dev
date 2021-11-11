@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Header from '../../components/Header';
 import NavBar from '../../components/NavBar';
 import { makeStyles } from '@material-ui/core/styles'
@@ -24,13 +24,6 @@ const UseStyles = makeStyles({
 function Home() {
     const navigate = useNavigate();
     const userState = useSelector(state => state.user);
-    const [user, setUser] = useState(userState);
-    useEffect(() => {
-        if (!user) {
-            navigate('/sign-in');
-        }
-    }, [navigate]);
-
 
     const classes = UseStyles();
     return (

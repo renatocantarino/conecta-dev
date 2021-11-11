@@ -5,7 +5,6 @@ class SignInService {
         return new Promise((resolve, reject) => {
             axios.post('/api/user/login', { email, password })
                 .then(response => {
-                    debugger;
                     if (response.data) {
                         //this.setuser(response.data.user);
                         resolve(response.data.user);

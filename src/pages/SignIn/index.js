@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Typography, Box, Button, Link, FormHelperText } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
@@ -47,12 +47,6 @@ function SignIn() {
 
     const classes = useStyles();
     const navigate = useNavigate();
-
-    // useEffect(() => {
-    //     if (AuthService.isAuthenticated()) {
-    //         navigate('/');
-    //     }
-    // })
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');

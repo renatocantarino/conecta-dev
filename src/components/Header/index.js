@@ -8,6 +8,7 @@ import {
 } from '@material-ui/core'
 import { Bell } from 'react-feather'
 import { makeStyles } from '@material-ui/core/styles'
+import { useSelector } from 'react-redux';
 
 
 const useStyles = makeStyles({
@@ -26,6 +27,7 @@ const useStyles = makeStyles({
 
 function Header() {
     const classes = useStyles();
+    const user = useSelector(state => state.user);
 
 
     return (
@@ -47,7 +49,7 @@ function Header() {
                             <Bell />
                         </SvgIcon>
                     </Button>
-                    <Avatar alt="R" src="/" />
+                    <Avatar alt={user && user.username} src="/" />
                 </div>
             </Toolbar>
         </AppBar>
