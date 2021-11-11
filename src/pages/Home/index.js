@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Header from '../../components/Header';
 import NavBar from '../../components/NavBar';
 import { makeStyles } from '@material-ui/core/styles'
 import { Box, Container } from '@material-ui/core';
 import Feed from '../../components/Feed';
-import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+
 
 const UseStyles = makeStyles({
     root: {
@@ -22,8 +21,6 @@ const UseStyles = makeStyles({
 
 
 function Home() {
-    const navigate = useNavigate();
-    const userState = useSelector(state => state.user);
 
     const classes = UseStyles();
     return (

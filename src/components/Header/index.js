@@ -1,14 +1,14 @@
 import React from 'react'
 import {
-    Button,
     AppBar,
     Toolbar,
-    SvgIcon,
-    Avatar
+    Box
 } from '@material-ui/core'
-import { Bell } from 'react-feather'
 import { makeStyles } from '@material-ui/core/styles'
-import { useSelector } from 'react-redux';
+
+import AvatarAccount from '../Avatar';
+import NotificationIcon from '../NotificationIcon';
+import WritePost from '../Post';
 
 
 const useStyles = makeStyles({
@@ -27,8 +27,6 @@ const useStyles = makeStyles({
 
 function Header() {
     const classes = useStyles();
-    const user = useSelector(state => state.user);
-
 
     return (
         <AppBar position="fixed" color="inherit" className={classes.appBar}>
@@ -41,15 +39,13 @@ function Header() {
 
                 <div className={classes.grow} />
                 <div className={classes.userSection}>
-                    <Button color="primary" variant="contained" className={classes.btn}>
-                        Novo Post
-                    </Button>
-                    <Button className={classes.btn}>
-                        <SvgIcon>
-                            <Bell />
-                        </SvgIcon>
-                    </Button>
-                    <Avatar alt={user && user.username} src="/" />
+                    <WritePost />
+                    <Box ml={2}>
+                        <NotificationIcon />
+                    </Box>
+                    <Box ml={2}>
+                        <AvatarAccount />
+                    </Box>
                 </div>
             </Toolbar>
         </AppBar>

@@ -6,6 +6,7 @@ import theme from "../../theme";
 import '../../Mocks';
 import store from '../../state/store';
 import GuestRoute from "../../routes/GuestRoute";
+import Auth from "../Auth";
 
 
 
@@ -14,10 +15,12 @@ function App() {
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <BrowserRouter>
-          <Routes>
-            <Route path="/sign-in" element={<GuestRoute />} />
-            <Route path="*" element={<GuestRoute />} />
-          </Routes>
+          <Auth>
+            <Routes>
+              <Route path="/sign-in" element={<GuestRoute />} />
+              <Route path="*" element={<GuestRoute />} />
+            </Routes>
+          </Auth>
         </BrowserRouter>
       </ThemeProvider>
     </Provider>

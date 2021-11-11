@@ -5,8 +5,8 @@ import Home from '../pages/Home';
 import SignIn from '../pages/SignIn'
 
 function GuestRoute() {
-    const userState = useSelector(state => state.user);
-    const isAuthenticated = Boolean(userState);
+    const userState = useSelector(state => state.account);
+    const isAuthenticated = Boolean(userState.user);
 
     return <>{isAuthenticated ? <Home /> : <SignIn />}</>;
 }

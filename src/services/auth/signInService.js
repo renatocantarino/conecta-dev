@@ -6,7 +6,7 @@ class SignInService {
             axios.post('/api/user/login', { email, password })
                 .then(response => {
                     if (response.data) {
-                        //this.setuser(response.data.user);
+                        this.setToken('JWT');
                         resolve(response.data.user);
                     }
                     else {
@@ -19,16 +19,27 @@ class SignInService {
         });
     }
 
-    setuser = (user) => {
-        localStorage.setItem('user', JSON.stringify(user));
-    };
+    signInWithToken = () => {
+        return new Promise((resolve, reject) => {
+            axios.post('/api/user/me')
+                .then(response => {
+                    if (response.data) {
+                        resolve(response.data.user);
+                    }
+                    else {
+                        reject(response.data.message);
+                    }
+                })
+                .catch(error => {
+                    reject(error);
+                });
+        });
+    }
 
-    getuser = () => {
-        const user = localStorage.getItem('user');
-        return user ? JSON.parse(user) : null;
-    };
-
-    isAuthenticated = () => !!this.getuser();
+    signOut = () => localStorage.removeItem('acessToken');
+    setToken = (token) => localStorage.setItem('acessToken', token);
+    getToken = () => localStorage.getItem('acessToken');
+    isAuthenticated = () => !!this.getToken();
 
 }
 

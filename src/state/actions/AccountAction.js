@@ -11,13 +11,36 @@ const signIn = (email, password) => {
         const user = await authService.signIn(email, password);
         dispatch({
             type: LOGIN_SUCCESS,
-            payload: {
-                user
-            },
+            payload: { user },
+        });
+    };
+};
+
+
+const signOut = () => {
+    return async (dispatch) => {
+        await authService.signOut();
+        dispatch({
+            type: SIGNOUT
         });
     };
 };
 
 
 
-export { signIn };
+
+
+const setUserData = () => {
+    return async (dispatch) => {
+        const user = await authService.signInWithToken();
+        dispatch({
+            type: SILENT_LOGIN,
+            payload: { user },
+        });
+    };
+};
+
+
+
+
+export { signIn, signOut, setUserData };

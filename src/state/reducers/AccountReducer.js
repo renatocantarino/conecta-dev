@@ -5,9 +5,7 @@ import {
 } from '../actions/AccountAction';
 
 
-const INITIAL_STATE = {
-    user: null
-}
+const INITIAL_STATE = { user: null }
 
 const accountReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
@@ -29,9 +27,7 @@ const accountReducer = (state = INITIAL_STATE, action) => {
                 user: null,
             };
         }
-        default: {
-            return state;
-        }
+        default: { return state; }
     }
 };
 export default accountReducer;
