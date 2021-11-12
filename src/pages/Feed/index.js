@@ -1,7 +1,9 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import PostCard from '../PostCard';
+import PostCard from '../../components/PostCard';
 import { Container, Box } from '@material-ui/core';
+import NavBar from './NavBar';
+
 
 
 const UseStyles = makeStyles((themes) => ({
@@ -83,6 +85,8 @@ function Feed() {
     return (
         <Container maxWidth="lg">
             <Box display="flex">
+
+                <NavBar />
                 <div className={classes.root}>
                     {posts.map((post) => (
                         <PostCard key={post.id} post={post} />
@@ -90,8 +94,7 @@ function Feed() {
                 </div>
             </Box>
         </Container>
-
-    )
+    );
 }
 
 export default Feed;

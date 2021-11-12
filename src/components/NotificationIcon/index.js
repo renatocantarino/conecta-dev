@@ -88,7 +88,7 @@ function NotificationIcon() {
                         {notificacoes.map((notification) => {
                             const Icon = iconsMap[notification.type];
                             return (
-                                <ListItem>
+                                <ListItem key={notification.id}>
                                     <ListItemAvatar>
                                         <Avatar className={classes.icon}>
                                             <SvgIcon>
@@ -97,6 +97,7 @@ function NotificationIcon() {
                                         </Avatar>
                                     </ListItemAvatar>
                                     <ListItemText
+
                                         primary={notification.title}
                                         primaryTypographyProps={{
                                             variant: 'subtitle2',

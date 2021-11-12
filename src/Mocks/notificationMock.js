@@ -18,7 +18,7 @@ mock.onGet('/api/notifications').reply(200, {
             createdAt: moment().subtract(1, 'day').toDate().getTime(),
         },
         {
-            id: '5e8883fca0e8612044248ecf',
+            id: '5e8883fca0e8612044248exf',
             title: 'Novos likes recebidos',
             description: 'Você receu 1 novo like',
             type: 'like',

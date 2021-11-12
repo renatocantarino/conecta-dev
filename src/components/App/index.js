@@ -7,6 +7,9 @@ import '../../Mocks';
 import store from '../../state/store';
 import GuestRoute from "../../routes/GuestRoute";
 import Auth from "../Auth";
+import Home from "../../pages/Home";
+import NewPost from "../../pages/Posts";
+
 
 
 
@@ -18,7 +21,8 @@ function App() {
           <Auth>
             <Routes>
               <Route path="/sign-in" element={<GuestRoute />} />
-              <Route path="*" element={<GuestRoute />} />
+              <Route path="//*" element={<Home />} />
+              <Route path="/posts/new" element={<NewPost />} />
             </Routes>
           </Auth>
         </BrowserRouter>
