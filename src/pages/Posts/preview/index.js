@@ -6,6 +6,7 @@ import Markdown from 'react-markdown';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 import { useSelector } from 'react-redux';
+import { usePostContext } from '../../../context/PostContext';
 
 const useStyles = makeStyles((theme) => ({
     imagePreview: {
@@ -17,14 +18,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function PostPreview({
-    image,
-    title,
-    tags,
-    markdownText
-}) {
+function PostPreview() {
     const classes = useStyles();
     const account = useSelector((state) => state.account);
+    const ctx = usePostContext();
+    const { image,
+        title,
+        tags,
+        markdownText } = ctx;
 
     return (
         <>

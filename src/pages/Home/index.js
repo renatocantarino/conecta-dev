@@ -3,22 +3,14 @@ import Header from '../../components/Header';
 import { makeStyles } from '@material-ui/core/styles'
 import { Routes, Route } from "react-router-dom";
 import Feed from '../Feed';
-import NewPost from '../Posts';
-
-
-
 
 const UseStyles = makeStyles({
     root: {
         display: 'flex',
         flexDirection: 'column'
     },
-    main: {
-        padding: 24,
-    },
-    toolbar: {
-        minHeight: 64,
-    },
+    main: { padding: 24, },
+    toolbar: { minHeight: 64, },
 })
 
 

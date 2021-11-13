@@ -7,6 +7,8 @@ import {
 } from '@material-ui/core';
 import { useDropzone } from 'react-dropzone'
 import { Autocomplete } from '@material-ui/lab';
+import Title from '../title'
+import { usePostContext } from '../../../context/PostContext';
 
 const useStyles = makeStyles(theme => ({
     root: {},
@@ -43,21 +45,16 @@ const arrayTags = [
     { title: 'webdev' },
 ];
 
-function PostEditor({
-    image,
-    setImage,
-    title,
-    setTitle,
-    tags,
-    setTags,
-    markdownText,
-    setMarkdownText,
-}) {
-
+function PostEditor() {
     const classes = useStyles();
-    //const ctx = usePost();
-
-    //const { image, setImage, tags, setTags, markdownText, setMarkdownText } = ctx;
+    const ctx = usePostContext();
+    const {
+        image,
+        setImage,
+        tags,
+        setTags,
+        markdownText,
+        setMarkdownText } = ctx;
 
     const onDrop = useCallback(
         (acceptedFiles) => {
@@ -91,12 +88,7 @@ function PostEditor({
                 </Box>
             )}
             <Box mb={2}>
-                <TextField
-                    id='title'
-                    fullWidth
-                    value={title}
-                    onChange={setTitle}
-                    placeholder="Titulo" />
+                <Title />
             </Box>
             <Box mb={2}>
                 <Autocomplete

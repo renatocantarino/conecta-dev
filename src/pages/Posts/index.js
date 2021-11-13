@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Header from '../../components/Header';
 import {
     makeStyles,
@@ -10,6 +10,7 @@ import {
 
 import PostEditor from './editor';
 import PostPreview from './preview';
+import { PostProvider } from '../../context/PostContext';
 
 const useStyles = makeStyles(theme => ({
     root: {},
@@ -23,50 +24,30 @@ const useStyles = makeStyles(theme => ({
 
 function NewPost() {
     const classes = useStyles();
-    const [image, setImage] = useState(null);
-    const [title, setTitle] = useState('');
-    const [tags, setTags] = useState([]);
-    const [markdownText, setMarkdownText] = useState('');
-
-    const HandleChangeTitle = (event) => setTitle(event.currentTarget.value);
-    const HandleChangeMarkdown = (event) => setMarkdownText(event.currentTarget.value);
-    const HandleChangeTags = (event, value) => setTags(value);
 
     return (
         <>
-            <Header />
-            <Box mt={11} display="flex" height="calc(100% - 70px)" >
-                <Box width="50%" padding={2} borderRight="1px solid #DDD">
-                    <PostEditor
-                        image={image}
-                        setImage={setImage}
-                        title={title}
-                        setTitle={HandleChangeTitle}
-                        tags={tags}
-                        setTags={HandleChangeTags}
-                        markdownText={markdownText}
-                        setMarkdownText={HandleChangeMarkdown}
-                    />
+            <PostProvider>
+                <Header />
+                <Box mt={11} display="flex" height="calc(100% - 70px)" >
+                    <Box width="50%" padding={2} borderRight="1px solid #DDD">
+                        <PostEditor />
+
+                    </Box>
+                    <Box width="50%" height="100%" padding={2}>
+                        <PostPreview />
+                    </Box>
 
                 </Box>
-                <Box width="50%" height="100%" padding={2}>
-                    <PostPreview
-                        image={image}
-                        title={title}
-                        tags={tags}
-                        markdownText={markdownText}
-                    />
-                </Box>
-
-            </Box>
-            <AppBar
-                className={classes.AppBar}
-                position="fixed" color="inherit">
-                <Toolbar>
-                    <Button className={classes.btn} color="inherit"> Salvar </Button>
-                    <Button color="secondary" variant="outlined"> Publicar </Button>
-                </Toolbar>
-            </AppBar>
+                <AppBar
+                    className={classes.AppBar}
+                    position="fixed" color="inherit">
+                    <Toolbar>
+                        <Button className={classes.btn} color="inherit"> Salvar </Button>
+                        <Button color="secondary" variant="outlined"> Publicar </Button>
+                    </Toolbar>
+                </AppBar>
+            </PostProvider>
         </>
     );
 }

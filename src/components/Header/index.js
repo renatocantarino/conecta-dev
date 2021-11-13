@@ -31,11 +31,13 @@ function Header() {
     return (
         <AppBar position="fixed" color="inherit" className={classes.appBar}>
             <Toolbar>
-                <img
-                    src='/imgs/logo.png'
-                    alt="logo"
-                    className={classes.img}
-                />
+                <a href="/" >
+                    <img
+                        src='/imgs/logo.png'
+                        alt="logo"
+                        className={classes.img}
+                    />
+                </a>
 
                 <div className={classes.grow} />
                 <div className={classes.userSection}>

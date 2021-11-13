@@ -1,12 +1,12 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
+import { usePostContext } from '../../../context/PostContext';
 
-import { usePost } from '../../../../context/PostContext';
+
 
 function Title() {
-    const ctx = usePost();
+    const ctx = usePostContext();
     const { title, setTitle } = ctx;
-
     return (
         <TextField
             id="title"
