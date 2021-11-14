@@ -1,26 +1,15 @@
 import React from 'react';
 import Header from '../../components/Header';
-import {
-    makeStyles,
-    Box,
-    AppBar,
-    Toolbar,
-    Button
-} from '@material-ui/core';
+import { Box } from '@material-ui/core';
 
 import PostEditor from './editor';
 import PostPreview from './preview';
 import { PostProvider } from '../../context/PostContext';
 import BottomBar from './bottomBar';
 
-const useStyles = makeStyles(theme => ({
-    root: {},
-    btn: { margin: theme.spacing(2) }
-}));
+
 
 function NewPost() {
-    const classes = useStyles();
-
     return (
         <>
             <PostProvider>

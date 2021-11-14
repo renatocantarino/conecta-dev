@@ -5,6 +5,7 @@ import {
     Toolbar,
     Button
 } from '@material-ui/core';
+import { usePostContext } from '../../../context/PostContext';
 
 
 const useStyles = makeStyles(theme => ({
@@ -20,14 +21,34 @@ const useStyles = makeStyles(theme => ({
 
 function BottomBar() {
     const classes = useStyles();
+    const ctx = usePostContext()
+
+
+    const HandleSaveAsDraft = () => {
+        alert('Save as Draft');
+    };
+
+    const HandleSavePost = () => {
+        alert('Save as Post');
+    };
+
+
     return (
         <>
             <AppBar
                 className={classes.AppBar}
                 position="fixed" color="inherit">
                 <Toolbar>
-                    <Button className={classes.btn} color="inherit"> Salvar </Button>
-                    <Button color="secondary" variant="outlined"> Publicar </Button>
+                    <Button
+                        className={classes.btn}
+                        color="inherit"
+                        onClick={HandleSaveAsDraft}
+                        variant="outlined"> Salvar como Rascunho </Button>
+
+                    <Button
+                        color="secondary"
+                        variant="outlined"
+                        onClick={HandleSavePost}> Publicar </Button>
                 </Toolbar>
             </AppBar>
 
