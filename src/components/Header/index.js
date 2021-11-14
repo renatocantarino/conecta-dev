@@ -4,6 +4,7 @@ import {
     Toolbar,
     Box
 } from '@material-ui/core'
+import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 
 import AvatarAccount from '../Avatar';
@@ -31,13 +32,13 @@ function Header() {
     return (
         <AppBar position="fixed" color="inherit" className={classes.appBar}>
             <Toolbar>
-                <a href="/" >
+                <Link to='/'>
                     <img
                         src='/imgs/logo.png'
                         alt="logo"
                         className={classes.img}
                     />
-                </a>
+                </Link>
 
                 <div className={classes.grow} />
                 <div className={classes.userSection}>

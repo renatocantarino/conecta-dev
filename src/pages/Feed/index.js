@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import PostCard from '../../components/PostCard';
 import { Container, Box } from '@material-ui/core';
+
 import NavBar from './NavBar';
-
-
+import axios from "../../Utils/axios";
+import PostCard from '../../components/PostCard';
 
 const UseStyles = makeStyles((themes) => ({
     root: {
@@ -16,72 +16,22 @@ const UseStyles = makeStyles((themes) => ({
     }
 }));
 
-const posts = [
-    {
-        id: 1,
-        autor:
-        {
-            nome: "Renato"
-
-        },
-        title: 'Post 1',
-        name: 'ReactJS'
-    },
-    {
-        id: 2,
-        autor:
-        {
-            nome: "Jose"
-
-        },
-        title: 'Post 2',
-        name: 'Node'
-    },
-    {
-        id: 3,
-        autor:
-        {
-            nome: "Alexandre"
-
-        },
-        title: 'Post 3',
-        name: 'Next'
-    },
-    {
-        id: 4,
-        autor:
-        {
-            nome: "Vitor"
-
-        },
-        title: 'Post 4',
-        name: 'Vue'
-    },
-    {
-        id: 5,
-        autor:
-        {
-            nome: "Yasmin"
-
-        },
-        title: 'Post 5',
-        name: 'Java'
-    },
-    {
-        id: 6,
-        autor:
-        {
-            nome: "Maritaca"
-
-        },
-        title: 'Post 6',
-        name: 'Rust'
-    }
-]
-
 
 function Feed() {
     const classes = UseStyles();
+    const [posts, setPosts] = React.useState([]);
+
+    const getPosts = useCallback(async () => {
+        const feed = await axios.get('/api/feed');
+        setPosts(feed.data.posts);
+    }, [setPosts]);
+
+    useEffect(() => {
+        getPosts();
+    }, [getPosts]);
+
+
+
     return (
         <Container maxWidth="lg">
             <Box display="flex">

@@ -46,10 +46,15 @@ const useStyles = makeStyles((theme) => ({
 
 function PostCard({ post }) {
     const classes = useStyles();
+
+    const HandlePostClick = () => alert(`Post clicked =>${post.slug}`);
+
+
+
     return (
-        <Card className={classes.root}>
+        <Card className={classes.root} onClick={HandlePostClick}>
             <CardHeader
-                avatar={<Avatar alt={post.autor.nome} src='/' />}
+                avatar={<Avatar alt={post.author.name} src='/' />}
                 title={<Typography variant="h5">{post.title}</Typography>}
                 subheader={
                     <div className={classes.subheader}>
@@ -59,7 +64,7 @@ function PostCard({ post }) {
 
                         <Typography
                             className={classes.caption}
-                            variant="subtitle2">{post.autor.nome}</Typography>
+                            variant="subtitle2">{post.author.name}</Typography>
                     </div>
                 }
             />

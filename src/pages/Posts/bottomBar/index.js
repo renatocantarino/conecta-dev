@@ -22,17 +22,16 @@ const useStyles = makeStyles(theme => ({
 function BottomBar() {
     const classes = useStyles();
     const ctx = usePostContext()
-
+    const { image, title, tags, markdownText } = ctx;
 
     const HandleSaveAsDraft = () => {
-        alert('Save as Draft');
+        alert(title);
+
     };
 
     const HandleSavePost = () => {
         alert('Save as Post');
     };
-
-
     return (
         <>
             <AppBar
