@@ -11,14 +11,10 @@ import {
 import PostEditor from './editor';
 import PostPreview from './preview';
 import { PostProvider } from '../../context/PostContext';
+import BottomBar from './bottomBar';
 
 const useStyles = makeStyles(theme => ({
     root: {},
-    AppBar: {
-        top: 'auto',
-        bottom: 0,
-        alignItems: 'center'
-    },
     btn: { margin: theme.spacing(2) }
 }));
 
@@ -39,14 +35,7 @@ function NewPost() {
                     </Box>
 
                 </Box>
-                <AppBar
-                    className={classes.AppBar}
-                    position="fixed" color="inherit">
-                    <Toolbar>
-                        <Button className={classes.btn} color="inherit"> Salvar </Button>
-                        <Button color="secondary" variant="outlined"> Publicar </Button>
-                    </Toolbar>
-                </AppBar>
+                <BottomBar />
             </PostProvider>
         </>
     );
