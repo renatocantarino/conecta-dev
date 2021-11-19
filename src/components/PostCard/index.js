@@ -10,6 +10,9 @@ import {
     IconButton
 } from '@material-ui/core';
 
+import { useNavigate } from 'react-router';
+import moment from 'moment';
+
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import MessageIcon from '@material-ui/icons/Message';
 
@@ -46,11 +49,9 @@ const useStyles = makeStyles((theme) => ({
 
 function PostCard({ post }) {
     const classes = useStyles();
+    const navigate = useNavigate();
 
-    const HandlePostClick = () => alert(`Post clicked =>${post.slug}`);
-
-
-
+    const HandlePostClick = () => navigate('/posts/como-melhorar-seu-codigo-javascript');
     return (
         <Card className={classes.root} onClick={HandlePostClick}>
             <CardHeader
@@ -64,7 +65,14 @@ function PostCard({ post }) {
 
                         <Typography
                             className={classes.caption}
-                            variant="subtitle2">{post.author.name}</Typography>
+                            variant="subtitle2">{post.author.name}
+                        </Typography>
+
+                        <Typography
+                            className={classes.caption}
+                            variant="caption">
+                            | {moment(post.date).fromNow()}
+                        </Typography>
                     </div>
                 }
             />
@@ -85,7 +93,6 @@ function PostCard({ post }) {
                 <IconButton aria-label="like">
                     <FavoriteIcon />
                     <Typography
-
                         style={{ cursor: 'pointer' }}
                         color="textSecondary"
                         variant="body2">

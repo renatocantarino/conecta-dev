@@ -11,9 +11,7 @@ const UseStyles = makeStyles((themes) => ({
         padding: themes.spacing(2),
         marginRight: themes.spacing(2)
     },
-    btn: {
-        width: '100%'
-    }
+    btn: { width: '100%' }
 }));
 
 
@@ -35,7 +33,6 @@ function Feed() {
     return (
         <Container maxWidth="lg">
             <Box display="flex">
-
                 <NavBar />
                 <div className={classes.root}>
                     {posts.map((post) => (

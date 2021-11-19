@@ -7,7 +7,7 @@ const UseStyles = makeStyles((themes) => ({
     root: {
         padding: themes.spacing(2),
         width: 275,
-        height: 270,
+        height: 301,
         marginRight: themes.spacing(2)
     },
     btn: {

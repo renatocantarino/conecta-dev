@@ -8,7 +8,9 @@ import store from '../../state/store';
 import GuestRoute from "../../routes/GuestRoute";
 import Auth from "../Auth";
 import Home from "../../pages/Home";
-import NewPost from "../../pages/Posts";
+import NewPost from "../../pages/Posts/new";
+import RootPost from "../../pages/Posts";
+
 
 
 
@@ -23,6 +25,7 @@ function App() {
               <Route path="/sign-in" element={<GuestRoute />} />
               <Route path="//*" element={<Home />} />
               <Route path="/posts/new" element={<NewPost />} />
+              <Route path="/posts/:slug" element={<RootPost />} />
             </Routes>
           </Auth>
         </BrowserRouter>
