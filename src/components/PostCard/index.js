@@ -85,7 +85,7 @@ function PostCard({ post }) {
                     {post.name}
                 </Typography>
                 <CardActionArea>
-                    <img src='/posts/post1.png' className={classes.image} alt='img' />
+                    <img src='imgs/posts/post1.png' className={classes.image} alt='img' />
                 </CardActionArea>
             </CardContent>
 

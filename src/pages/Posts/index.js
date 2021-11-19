@@ -20,10 +20,6 @@ function RootPost() {
         getPosts();
     }, [getPosts]);
 
-
-
-
-
     return (
         <>
             <Header />

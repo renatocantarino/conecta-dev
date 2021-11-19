@@ -10,6 +10,7 @@ import Auth from "../Auth";
 import Home from "../../pages/Home";
 import NewPost from "../../pages/Posts/new";
 import RootPost from "../../pages/Posts";
+import Me from "../../pages/profile";
 
 
 
@@ -26,6 +27,7 @@ function App() {
               <Route path="//*" element={<Home />} />
               <Route path="/posts/new" element={<NewPost />} />
               <Route path="/posts/:slug" element={<RootPost />} />
+              <Route path="/me" element={<Me />} />
             </Routes>
           </Auth>
         </BrowserRouter>

@@ -38,7 +38,9 @@ function PostViewer({ post }) {
                     <Avatar className={classes.avatar} src={author?.avatar} />
                 </Box>
                 <Box>
-                    <Typography variant="body1" color="textPrimary">
+                    <Typography
+                        variant="body1"
+                        color="textPrimary">
                         {author?.name}
                     </Typography>
                     <Typography variant="body2" color="textSecondary">
@@ -53,7 +55,10 @@ function PostViewer({ post }) {
             </Box>
             {image && (
                 <Box mb={2}>
-                    <img className={classes.imagePreview} src={image} alt="background" />
+                    <img
+                        className={classes.imagePreview}
+                        src={image}
+                        alt="background" />
                 </Box>
             )}
             <Box>
@@ -62,15 +67,16 @@ function PostViewer({ post }) {
                     <Typography
                         style={{ cursor: 'pointer' }}
                         color="textSecondary"
-                        variant="body2"
-                    >
+                        variant="body2">
                         {post.likes}
                     </Typography>
                 </IconButton>
             </Box>
             <Divider />
             <Box mb={8}>
-                <Markdown source={markdownText} className={classes.markdown} />
+                <Markdown
+                    source={markdownText}
+                    className={classes.markdown} />
             </Box>
         </Container>
     );

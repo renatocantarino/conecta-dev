@@ -6,7 +6,17 @@ mock.onPost('/api/user/me').reply(200, {
         id: 1,
         name: 'Renato Cantarino',
         username: 'Renatocantarino',
-        email: 'renatocantarino@renatocantarino.com.br'
+        email: 'eu@renatocantarino.com.br'
+    },
+});
+
+
+mock.onGet('/api/user/profile').reply(200, {
+    user: {
+        id: 1,
+        name: 'Renato Cantarino',
+        username: 'Renatocantarino',
+        email: 'eu@renatocantarino.com.br'
     },
 });
 
@@ -25,4 +35,6 @@ mock.onPost('/api/user/login').reply((config) => {
 
     return [200, { user }];
 });
+
+
 
